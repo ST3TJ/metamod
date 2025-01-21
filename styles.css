@@ -1,0 +1,75 @@
+html {
+    background-color: black;
+    height: 100%;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+}
+
+body {
+    size: inherit;
+}
+
+#logo {
+    display: none;
+    color: white;
+    opacity: 0;
+    transition: opacity 1s ease;
+    text-align: center;
+    line-height: 10px
+}
+
+#logo p {
+    transition: opacity 0.5s ease-in-out;
+}
+
+#text {
+    border: 0px solid white;
+    border-width: 10px;
+    border-style: solid;
+    position: relative;
+    padding: 0px;
+    opacity: 0;
+    transition: border-width 1s ease, padding 1s ease, opacity 1s ease, transform 1.5s ease;
+}
+
+#description {
+    opacity: 0;
+    color: white;
+    position: fixed;
+    transition: opacity 1s ease;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 5px;
+    display: none;
+}
+
+#contacts {
+    left: 50%;
+    position: fixed;
+    bottom: -30px;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 1.5s ease, bottom 1.5s ease;
+    display: flex;
+    gap: 50px;
+}
+
+#contacts>a {
+    color: white;
+    text-decoration: none;
+}
+
+button {
+    color: white;
+    background-color: black;
+    border: 0px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
+    font-size: medium;
+}
