@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             contacts.style.opacity = '1'
             contacts.style.bottom = '40px'
-            navbar.style.display = 'block'
+            navbar.style.display = 'flex'
 
             setTimeout(() => {
                 navbar.style.opacity = '1';
@@ -94,4 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         }, 3000);
     });
+
+    const buttons = document.querySelectorAll('#navbar button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        });
+    });
+
+    setInterval(() => {
+        const selectedButton = document.querySelector('#navbar button.selected');
+        console.log(selectedButton.textContent);
+    }, 500)
 })
