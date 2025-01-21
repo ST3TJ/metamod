@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const desc = document.getElementById('description')
         const logo = document.getElementById('logo')
         const contacts = document.getElementById('contacts')
+        const navbar = document.getElementById('navbar')
 
         setTimeout(() => {
             text.style.display = 'none'
@@ -69,6 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             contacts.style.opacity = '1'
             contacts.style.bottom = '30px'
+            navbar.style.display = 'block'
+
+            setTimeout(() => {
+                navbar.style.opacity = '1';
+            }, 10);
         }, 6000)
 
         const logoText = document.querySelector('#logo p');
