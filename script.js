@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 10);
 
             contacts.style.opacity = '1'
-            contacts.style.bottom = '30px'
+            contacts.style.bottom = '40px'
             navbar.style.display = 'block'
 
             setTimeout(() => {
