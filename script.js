@@ -26,20 +26,22 @@ const adv = [
     'adaptive fakelag system',
 ];
 
+var inAnimation = false;
+
 document.addEventListener('DOMContentLoaded', () => {
-    const text = document.getElementById('text')
+    const click_me = document.querySelector('#Home button')
 
     setTimeout(() => {
-        text.style.padding = "20vh 20vw"
-        text.style.opacity = "1"
-        text.style.borderWidth = "1px"
+        click_me.style.padding = "20vh 20vw"
+        click_me.style.opacity = "1"
+        click_me.style.borderWidth = "1px"
     }, 500)
 
-    document.getElementById('click_me').addEventListener('click', () => {
-        text.style.padding = "0px"
-        text.style.opacity = "0"
-        text.style.borderWidth = "10px"
-        text.style.transform = "scale(0)"
+    click_me.addEventListener('click', () => {
+        click_me.style.padding = "0px"
+        click_me.style.opacity = "0"
+        click_me.style.borderWidth = "10px"
+        click_me.style.transform = "scale(0)"
 
         const desc = document.getElementById('description')
         const logo = document.getElementById('logo')
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const navbar = document.getElementById('navbar')
 
         setTimeout(() => {
-            text.style.display = 'none'
+            click_me.style.display = 'none'
             desc.style.display = 'block'
 
             setTimeout(() => {
@@ -95,17 +97,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     });
 
+    // TODO: Change this fucking spinner to fade away
     const buttons = document.querySelectorAll('#navbar button');
 
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            buttons.forEach(btn => btn.classList.remove('selected'));
+            if (inAnimation) {
+                return
+            }
+
+            const prevSelected = document.querySelector('#navbar button.selected');
+            prevSelected.classList.remove('selected')
+
+            const prevTab = document.getElementById(prevSelected.textContent)
+            prevTab.style.left = '200%';
+
+            const selectedTab = document.getElementById(button.textContent)
             button.classList.add('selected');
+            selectedTab.style.display = 'block'
+            setTimeout(() => {
+                selectedTab.style.left = '50%'
+            }, 10)
+
+            inAnimation = true
+
+            setTimeout(() => {
+                prevTab.style.display = 'none'
+                prevTab.style.left = '-100%'
+                inAnimation = false
+            }, 1000)
         });
     });
 
-    setInterval(() => {
-        const selectedButton = document.querySelector('#navbar button.selected');
-        console.log(selectedButton.textContent);
-    }, 500)
 })

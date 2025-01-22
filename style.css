@@ -3,18 +3,13 @@ html {
     height: 100%;
     width: 100%;
     margin: 0px;
-    display: flex;
     justify-content: center;
     align-items: center;
     font-family: monospace;
 }
 
-body {
-    size: inherit;
-}
-
 .selected {
-    color: rgb(255, 255, 255, 0.15)
+    color: rgb(255, 255, 255, 0.15) !important;
 }
 
 .selected:hover {
@@ -49,6 +44,47 @@ body {
     transform: scale(1.5, 1.5);
 }
 
+#navbar>button:active {
+    color: lightskyblue;
+}
+
+#Shop,
+#About\ us {
+    display: block;
+    position: fixed;
+    color: white;
+    left: -100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 1s ease-in-out;
+    width: 50%;
+    text-align: center;
+}
+
+#Home {
+    display: block;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 1s ease-in-out;
+}
+
+#Home button {
+    border: 0px solid white;
+    border-width: 10px;
+    position: relative;
+    padding: 0px;
+    opacity: 0;
+    transition: border-width 1s ease, padding 1s ease, opacity 1s ease, transform 1.5s ease;
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
+    font-size: medium;
+}
+
 #logo {
     display: none;
     color: white;
@@ -62,24 +98,10 @@ body {
     transition: opacity 0.5s ease-in-out;
 }
 
-#text {
-    border: 0px solid white;
-    border-width: 10px;
-    border-style: solid;
-    position: relative;
-    padding: 0px;
-    opacity: 0;
-    transition: border-width 1s ease, padding 1s ease, opacity 1s ease, transform 1.5s ease;
-}
-
 #description {
     opacity: 0;
     color: white;
-    position: fixed;
     transition: opacity 1s ease;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     text-align: center;
     line-height: 5px;
     display: none;
@@ -109,11 +131,7 @@ body {
 }
 
 button {
-    color: white;
     background-color: black;
-    border: 0px;
-    text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 100;
-    font-size: medium;
+    color: white;
+    border-style: none;
 }
