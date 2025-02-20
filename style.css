@@ -48,26 +48,73 @@ html {
     color: lightskyblue;
 }
 
-#Shop,
-#About\ us {
+.tab {
     display: block;
-    position: fixed;
+    position: absolute;
     color: white;
-    left: -100%;
+    left: 50%;
     top: 50%;
+    opacity: 0;
     transform: translate(-50%, -50%);
-    transition: left 1s ease-in-out;
-    width: 50%;
+    transition: left 1s ease-in-out, opacity 1s ease-in-out;
+    width: 75%;
     text-align: center;
+    margin: 0 auto;
+}
+
+#Shop {
+    display: flex !important;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.product {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+}
+
+.product-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+.product-title {
+    font-weight: bold;
+    margin: 0;
+}
+
+.product-price {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.product-description {
+    padding: 15px;
+    font-size: 14px;
+    color: #555;
 }
 
 #Home {
+    opacity: 1 !important;
     display: block;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    transition: left 1s ease-in-out;
 }
 
 #Home button {
@@ -89,7 +136,7 @@ html {
     display: none;
     color: white;
     opacity: 0;
-    transition: opacity 1s ease;
+    transition: opacity 1s ease-in-out;
     text-align: center;
     line-height: 10px
 }
