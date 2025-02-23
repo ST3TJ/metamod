@@ -30,6 +30,8 @@ html {
     gap: 50px;
     justify-content: center;
     justify-items: center;
+    background-color: black;
+    z-index: 1;
 }
 
 #navbar>button {
@@ -67,6 +69,13 @@ html {
     gap: 50px;
     align-items: center;
     justify-content: center;
+    grid-auto-flow: column;
+}
+
+@media (max-width: 1080px) {
+    #Shop {
+        grid-auto-flow: row;
+    }
 }
 
 .product {
@@ -167,12 +176,18 @@ html {
 #contacts {
     left: 50%;
     position: fixed;
-    bottom: -30px;
+    bottom: 0px;
     transform: translateX(-50%);
     opacity: 0;
     transition: opacity 1.5s ease, bottom 1.5s ease;
     display: flex;
     gap: 50px;
+    border: 1px solid #ccc;
+    background-color: black;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom: none;
+    z-index: 1;
+    padding: 15px 40px 30px;
 }
 
 #contacts>a {
