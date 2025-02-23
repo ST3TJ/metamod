@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         click_me.style.borderWidth = "10px"
         click_me.style.transform = "scale(0)"
 
+        const home = document.getElementById('Home')
         const desc = document.getElementById('description')
         const logo = document.getElementById('logo')
         const contacts = document.getElementById('contacts')
@@ -59,11 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
             desc.style.opacity = '0'
-            desc.style.padding = '0px'
         }, 4000)
 
         setTimeout(() => {
             desc.style.display = 'none';
+            home.style.opacity = '1'
             logo.style.display = 'block'
 
             setTimeout(() => {
@@ -112,6 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const selectedTab = document.getElementById(button.textContent)
             button.classList.add('selected');
+
+            if (prevTab == selectedTab) {
+                return
+            }
 
             if (button.textContent == 'Shop') {
                 selectedTab.style.display = 'grid'
