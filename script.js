@@ -29,7 +29,7 @@ const adv = [
 var inAnimation = false;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const click_me = document.querySelector('#Home button')
+    const click_me = document.querySelector('#click_me')
 
     setTimeout(() => {
         click_me.style.padding = "20vh 20vw"
