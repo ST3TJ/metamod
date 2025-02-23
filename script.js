@@ -29,7 +29,7 @@ const adv = [
 var inAnimation = false;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const click_me = document.querySelector('#Home button')
+    const click_me = document.querySelector('#click_me')
 
     setTimeout(() => {
         click_me.style.padding = "20vh 20vw"
@@ -71,33 +71,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 10);
 
             contacts.style.opacity = '1'
-            contacts.style.bottom = '40px'
+            contacts.style.bottom = '0px'
             navbar.style.display = 'flex'
 
             setTimeout(() => {
                 navbar.style.opacity = '1';
             }, 10);
         }, 6000)
-
-        const logoText = document.querySelector('#logo p');
-        let lastIndex = -1;
-
-        setInterval(() => {
-            logoText.style.opacity = '0';
-            setTimeout(() => {
-                let newIndex;
-                do {
-                    newIndex = Math.floor(Math.random() * adv.length);
-                } while (newIndex === lastIndex);
-
-                lastIndex = newIndex;
-                logoText.textContent = adv[newIndex];
-                logoText.style.opacity = '1';
-            }, 500);
-        }, 3000);
     });
 
-    // TODO: Change this fucking spinner to fade away
+    const logoText = document.querySelector('#logo p');
+    let lastIndex = -1;
+
+    setInterval(() => {
+        logoText.style.opacity = '0';
+        setTimeout(() => {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * adv.length);
+            } while (newIndex === lastIndex);
+
+            lastIndex = newIndex;
+            logoText.textContent = adv[newIndex];
+            logoText.style.opacity = '1';
+        }, 500);
+    }, 3000);
+
     const buttons = document.querySelectorAll('#navbar button');
 
     buttons.forEach(button => {
@@ -110,20 +109,26 @@ document.addEventListener('DOMContentLoaded', () => {
             prevSelected.classList.remove('selected')
 
             const prevTab = document.getElementById(prevSelected.textContent)
-            prevTab.style.left = '200%';
 
             const selectedTab = document.getElementById(button.textContent)
             button.classList.add('selected');
-            selectedTab.style.display = 'block'
+
+            if (button.textContent == 'Shop') {
+                selectedTab.style.display = 'grid'
+            } else {
+                selectedTab.style.display = 'block'
+            }
+
+            prevTab.style.opacity = '0'
+
             setTimeout(() => {
-                selectedTab.style.left = '50%'
-            }, 10)
+                selectedTab.style.opacity = '1'
+            }, 500)
 
             inAnimation = true
 
             setTimeout(() => {
                 prevTab.style.display = 'none'
-                prevTab.style.left = '-100%'
                 inAnimation = false
             }, 1000)
         });
