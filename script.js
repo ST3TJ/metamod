@@ -26,66 +26,81 @@ const adv = [
     'adaptive fakelag system',
 ];
 
-var inAnimation = false;
+let inAnimation = false;
+let lastIndex = -1;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const click_me = document.querySelector('#click_me')
-
-    setTimeout(() => {
-        click_me.style.padding = "20vh 20vw"
-        click_me.style.opacity = "1"
-        click_me.style.borderWidth = "1px"
-    }, 500)
-
-    click_me.addEventListener('click', () => {
-        click_me.style.padding = "0px"
-        click_me.style.opacity = "0"
-        click_me.style.borderWidth = "10px"
-        click_me.style.transform = "scale(0)"
-
-        const home = document.getElementById('Home')
-        const desc = document.getElementById('description')
-        const logo = document.getElementById('logo')
-        const contacts = document.getElementById('contacts')
-        const navbar = document.getElementById('navbar')
-
-        setTimeout(() => {
-            click_me.style.display = 'none'
-            desc.style.display = 'block'
-
-            setTimeout(() => {
-                desc.style.opacity = '1'
-            }, 10);
-        }, 2000)
-
-        setTimeout(() => {
-            desc.style.opacity = '0'
-        }, 4000)
-
-        setTimeout(() => {
-            desc.style.display = 'none';
-            home.style.opacity = '1'
-            logo.style.display = 'block'
-
-            setTimeout(() => {
-                logo.style.opacity = '1';
-            }, 10);
-
-            contacts.style.opacity = '1'
-            contacts.style.bottom = '0px'
-            navbar.style.display = 'flex'
-
-            setTimeout(() => {
-                navbar.style.opacity = '1';
-            }, 10);
-        }, 6000)
-    });
-
+    const clickMeButton = document.querySelector('#click_me');
+    const homeSection = document.getElementById('Home');
+    const descriptionElement = document.getElementById('description');
+    const logoElement = document.getElementById('logo');
+    const contactsElement = document.getElementById('contacts');
+    const navbarElement = document.getElementById('navbar');
     const logoText = document.querySelector('#logo p');
-    let lastIndex = -1;
+
+    function fadeInElement(element, delay = 10) {
+        setTimeout(() => {
+            element.style.opacity = '1';
+        }, delay);
+    }
+
+    if (document.cookie.includes('metamod')) {
+        initializePage();
+    } else {
+        setupClickMeButton();
+    }
+
+    function initializePage() {
+        homeSection.style.opacity = '1';
+        logoElement.style.display = 'block';
+        fadeInElement(logoElement);
+
+        contactsElement.style.opacity = '1';
+        contactsElement.style.bottom = '0px';
+        navbarElement.style.display = 'flex';
+        fadeInElement(navbarElement);
+
+        let newIndex = Math.floor(Math.random() * adv.length);
+        lastIndex = newIndex;
+
+        logoText.textContent = adv[newIndex];
+        logoText.style.opacity = '1';
+    }
+
+    function setupClickMeButton() {
+        setTimeout(() => {
+            clickMeButton.style.padding = '20vh 20vw';
+            clickMeButton.style.opacity = '1';
+            clickMeButton.style.borderWidth = '1px';
+        }, 500);
+
+        clickMeButton.addEventListener('click', () => {
+            clickMeButton.style.padding = '0px';
+            clickMeButton.style.opacity = '0';
+            clickMeButton.style.borderWidth = '10px';
+            clickMeButton.style.transform = 'scale(0)';
+
+            setTimeout(() => {
+                clickMeButton.style.display = 'none';
+                descriptionElement.style.display = 'block';
+                fadeInElement(descriptionElement);
+
+                setTimeout(() => {
+                    descriptionElement.style.opacity = '0';
+                }, 4000);
+
+                setTimeout(() => {
+                    descriptionElement.style.display = 'none';
+                    initializePage();
+                    document.cookie = 'metamod=true;';
+                }, 6000);
+            }, 2000);
+        });
+    }
 
     setInterval(() => {
         logoText.style.opacity = '0';
+
         setTimeout(() => {
             let newIndex;
             do {
@@ -99,44 +114,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000);
 
     const buttons = document.querySelectorAll('#navbar button');
-
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            if (inAnimation) {
-                return
-            }
+            if (inAnimation) return;
 
-            const prevSelected = document.querySelector('#navbar button.selected');
-            prevSelected.classList.remove('selected')
+            const prevSelectedButton = document.querySelector('#navbar button.selected');
+            const prevTab = document.getElementById(prevSelectedButton.textContent);
+            const selectedTab = document.getElementById(button.textContent);
 
-            const prevTab = document.getElementById(prevSelected.textContent)
-
-            const selectedTab = document.getElementById(button.textContent)
+            prevSelectedButton.classList.remove('selected');
             button.classList.add('selected');
 
-            if (prevTab == selectedTab) {
-                return
-            }
+            if (prevTab === selectedTab) return;
 
-            if (button.textContent == 'Shop') {
-                selectedTab.style.display = 'grid'
+            if (button.textContent === 'Shop') {
+                selectedTab.style.display = 'grid';
             } else {
-                selectedTab.style.display = 'block'
+                selectedTab.style.display = 'block';
             }
 
-            prevTab.style.opacity = '0'
+            prevTab.style.opacity = '0';
+
+            inAnimation = true;
 
             setTimeout(() => {
-                selectedTab.style.opacity = '1'
-            }, 500)
-
-            inAnimation = true
+                selectedTab.style.opacity = '1';
+            }, 500);
 
             setTimeout(() => {
-                prevTab.style.display = 'none'
-                inAnimation = false
-            }, 1000)
+                prevTab.style.display = 'none';
+                inAnimation = false;
+            }, 1000);
         });
     });
-
-})
+});
