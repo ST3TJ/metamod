@@ -29,8 +29,19 @@ const adv = [
 let inAnimation = false;
 let lastIndex = -1;
 
+function fadeInElement(element, delay = 10) {
+    setTimeout(() => {
+        element.style.opacity = '1';
+    }, delay);
+}
+
+// Внизу очень много щит кода
+// Но он работает
+// И это главное
 document.addEventListener('DOMContentLoaded', () => {
     const clickMeButton = document.querySelector('#click_me');
+    const clickMeContainer = document.querySelector('#click_me_container');
+
     const homeSection = document.getElementById('Home');
     const descriptionElement = document.getElementById('description');
     const logoElement = document.getElementById('logo');
@@ -38,16 +49,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbarElement = document.getElementById('navbar');
     const logoText = document.querySelector('#logo p');
 
-    function fadeInElement(element, delay = 10) {
-        setTimeout(() => {
-            element.style.opacity = '1';
-        }, delay);
+    const cookie = document.getElementById('cookie');
+    const cookie_accept = document.getElementById('cookie-accept');
+    const cookie_decline = document.getElementById('cookie-decline');
+
+    if (document.cookie.includes('cookieAccepted')) {
+        cookie.style.display = 'none';
     }
+
+    setTimeout(() => {
+        cookie.style.opacity = '1';
+    }, 500);
+
+    cookie_accept.addEventListener('click', () => {
+        document.cookie = 'cookieAccepted=true;';
+        cookie.style.opacity = '0';
+        setTimeout(() => {
+            cookie.style.display = 'none';
+            setupClickMeButton();
+        }, 500);
+    });
+
+    cookie_decline.addEventListener('click', () => {
+        cookie.style.opacity = '0';
+        setTimeout(() => {
+            cookie.style.display = 'none';
+            setupClickMeButton();
+        }, 500);
+    });
 
     if (document.cookie.includes('metamod')) {
         initializePage();
-    } else {
-        setupClickMeButton();
     }
 
     function initializePage() {
@@ -69,19 +101,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setupClickMeButton() {
         setTimeout(() => {
-            clickMeButton.style.padding = '20vh 20vw';
             clickMeButton.style.opacity = '1';
-            clickMeButton.style.borderWidth = '1px';
+
+            clickMeContainer.style.padding = '20vh 20vw';
+            clickMeContainer.style.borderWidth = '1px';
+            clickMeContainer.style.opacity = '1';
         }, 500);
 
         clickMeButton.addEventListener('click', () => {
-            clickMeButton.style.padding = '0px';
+            clickMeContainer.style.padding = '0px';
+            clickMeContainer.style.borderWidth = '10px';
+            clickMeContainer.style.opacity = '0';
+            clickMeContainer.style.transform = 'scale(0)';
+
             clickMeButton.style.opacity = '0';
-            clickMeButton.style.borderWidth = '10px';
             clickMeButton.style.transform = 'scale(0)';
 
             setTimeout(() => {
                 clickMeButton.style.display = 'none';
+                clickMeContainer.style.display = 'none';
                 descriptionElement.style.display = 'block';
                 fadeInElement(descriptionElement);
 
@@ -92,7 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     descriptionElement.style.display = 'none';
                     initializePage();
-                    document.cookie = 'metamod=true;';
+                    if (document.cookie.includes('cookieAccepted')) {
+                        document.cookie = 'metamod=true;';
+                    }
                 }, 6000);
             }, 2000);
         });
