@@ -39,8 +39,8 @@ function fadeInElement(element, delay = 10) {
 // Но он работает
 // И это главное
 document.addEventListener('DOMContentLoaded', () => {
-    const clickMeButton = document.querySelector('#click_me');
-    const clickMeContainer = document.querySelector('#click_me_container');
+    const clickMeButton = document.querySelector('#click-me');
+    const clickMeContainer = document.querySelector('#click-me-container');
 
     const homeSection = document.getElementById('Home');
     const descriptionElement = document.getElementById('description');
