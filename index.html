@@ -11,7 +11,9 @@
 
 <body>
     <div id="intro">
-        <button id="click_me">click me</button>
+        <div id="click-me-container">
+            <button id="click-me">click me</button>
+        </div>
 
         <div id="description">
             <p>fly with us</p>
@@ -26,78 +28,35 @@
     </div>
 
     <div id="Shop" class="tab">
-        <div class="product">
+        <div id="product-menu">
             <div class="product-header">
-                <div class="product-icon" style="background-image: url('kid.png');"></div>
-                <div>
-                    <h3 class="product-title">Base</h3>
-                    <p class="product-price">2$ / 150 рублей</p>
-                </div>
+                <h3>Choose your version</h3>
+                <select id="product-select">
+                    <option value="1">Stable</option>
+                    <option value="2">Beta</option>
+                    <option value="3">Alpha</option>
+                </select>
             </div>
-            <div class="product-description">
-                You get the basic version of the metamod.<br>
-                - Access to the basic functions of the script.<br>
-                - Limited number of user configs (5 per user).<br>
-                - Basic support through FAQ and publicly available materials<br>
-                - Updates once a month<br>
-                - Easy setup with no additional features<br>
+            <div id="product-description">
+                meow
             </div>
-        </div>
+            <div class="product-bottom-bar">
+                <button class="buy-button">
+                    Buy
+                </button>
+                <p id="product-price">meow</p>
+            </div>
 
-        <div class="product">
-            <div class="product-header">
-                <div class="product-icon" style="background-image: url('settings.png');"></div>
-                <div>
-                    <h3 class="product-title">Beta</h3>
-                    <p class="product-price">5$ / 400 рублей</p>
-                </div>
-            </div>
-            <div class="product-description">
-                You are getting the beta version of the metamod.<br>
-                - All functions from the Basic version<br>
-                - Additional tools and advanced settings<br>
-                - Unlimited number of user configs<br>
-                - Technical support (responses within 24 hours)<br>
-                - Early access to beta testing of new features<br>
-                - Chat access for beta users<br>
-                - Distinctive signs ( clantag, shared icon )<br>
-            </div>
-        </div>
-
-        <div class="product">
-            <div class="product-header">
-                <div class="product-icon" style="background-image: url('crown.png');"></div>
-                <div>
-                    <h3 class="product-title">Alpha</h3>
-                    <p class="product-price">10$ / 800 рублей</p>
-                </div>
-            </div>
-            <div class="product-description">
-                You get the alpha version of the metamod.<br>
-                - All features from the Basic and Beta versions<br>
-                - Weekly updates and bug fixes<br>
-                - Access to closed experimental features before their official release<br>
-                - Special round-the-clock technical support<br>
-                - Access to the developer's chat<br>
-                - The ability to add functions specifically at your request<br>
-            </div>
         </div>
     </div>
 
     <div id="About us" class="tab">
-        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
-            tortor quam,
-            feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-            ultricies mi
-            vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum
-            erat wisi,
-            condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum,
-            eros ipsum
-            rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.
-            Praesent dapibus,
-            neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat
-            volutpat. Nam dui
-            mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+        We are a professional team of scripters with years of proven experience.<br>
+        Behind us are dozens of successful projects and satisfied users.<br>
+        Metamod is the result of constant development, testing, and community feedback.<br>
+        We don’t follow trends — we set them.<br>
+        Metamod is stability, functionality, and support you can rely on.<br>
+        It’s not just a script — it’s a tool built for those who value quality.<br>
     </div>
 
     <div id="Home" class="tab">
@@ -113,6 +72,15 @@
         <a href="https://discord.gg/Qz8ePbYu6Y">Discord</a>
     </div>
 
+    <div id="cookie">
+        <div id="cookie-menu">
+            <h3>
+                This website uses cookies
+            </h3>
+            <button id="cookie-accept">Accept</button>
+            <button id="cookie-decline">Decline</button>
+        </div>
+    </div>
 </body>
 
 </html>
