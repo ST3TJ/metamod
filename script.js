@@ -119,6 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.cookie.includes('cookieAccepted')) {
         cookie.style.display = 'none';
+        if (!document.cookie.includes('metamod')) {
+            setupClickMeButton();
+        }
     }
 
     setTimeout(() => {
