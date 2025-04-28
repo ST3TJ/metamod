@@ -143,7 +143,7 @@ body {
 #contacts {
     left: 50%;
     position: fixed;
-    bottom: 0px;
+    bottom: -50px;
     transform: translateX(-50%);
     opacity: 0;
     transition: opacity 1.5s ease, bottom 1.5s ease;
@@ -221,6 +221,7 @@ button {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
+    max-width: 90%;
     padding: 20px;
     display: flex;
     flex-direction: column;

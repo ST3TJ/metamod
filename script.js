@@ -119,6 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.cookie.includes('cookieAccepted')) {
         cookie.style.display = 'none';
+        if (!document.cookie.includes('metamod')) {
+            setupClickMeButton();
+        }
     }
 
     setTimeout(() => {
@@ -145,7 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (document.cookie.includes('metamod')) {
-        initializePage();
+        setTimeout(() => {
+            initializePage();
+        }, 1000);
     }
 
     function initializePage() {
