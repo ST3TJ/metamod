@@ -148,7 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (document.cookie.includes('metamod')) {
-        initializePage();
+        setTimeout(() => {
+            initializePage();
+        }, 1000);
     }
 
     function initializePage() {
